@@ -10,7 +10,9 @@ public class GameController {
         this.gameService = gameService;
     }
 
-    public void startGame() {
-        gameService.startGame();
+    public void run() {
+        gameService.start();
+
+        gameService.end();
     }
 }

@@ -2,6 +2,8 @@ package baseball.service;
 
 public interface GameService {
 
-    void startGame();
+    void start();
 
+    void end();
+    
 }

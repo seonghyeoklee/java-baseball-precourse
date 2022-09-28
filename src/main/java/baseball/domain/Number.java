@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import static baseball.domain.PickNumberRangeType.validateRange;
+
 public class Number {
 
     private final int number;
@@ -10,10 +12,13 @@ public class Number {
     }
 
     private void validate(final int number) {
-        // TODO: 유효성 체크
+        validateRange(number);
     }
 
-    public int getNumber() {
-        return number;
+    @Override
+    public String toString() {
+        return "Number{" +
+                "number=" + number +
+                '}';
     }
 }
