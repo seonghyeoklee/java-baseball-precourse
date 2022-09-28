@@ -1,18 +1,18 @@
 package baseball.controller;
 
-import baseball.service.GameService;
+import baseball.service.BaseballGameTemplate;
+import baseball.service.CallBack;
 
 public class GameController {
 
-    private final GameService gameService;
+    private final BaseballGameTemplate<String> template;
 
-    public GameController(GameService gameService) {
-        this.gameService = gameService;
+    public GameController(BaseballGameTemplate<String> template) {
+        this.template = template;
     }
 
-    public void run() {
-        gameService.start();
-
-        gameService.end();
+    public void run(CallBack<String> callBack) {
+        template.execute(callBack);
     }
+
 }

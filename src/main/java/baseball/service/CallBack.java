@@ -1,7 +1,7 @@
 package baseball.service;
 
-public interface CallBack {
+public interface CallBack<T> {
 
-    void call();
+    T call();
 
 }

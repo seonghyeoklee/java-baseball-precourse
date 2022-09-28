@@ -18,11 +18,13 @@ public enum PickNumberRangeType {
     public static void validateRange(final int number) {
         if (number < START_INCLUSIVE.getNumber()) {
             throw new IllegalArgumentException(
-                    String.format("number cannot be less than %d.", START_INCLUSIVE.getNumber()));
+                    String.format("number cannot be less than %d", START_INCLUSIVE.getNumber())
+            );
         }
         if (number > END_INCLUSIVE.getNumber()) {
             throw new IllegalArgumentException(
-                    String.format("number cannot be greater than %d.", END_INCLUSIVE.getNumber()));
+                    String.format("number cannot be greater than %d", END_INCLUSIVE.getNumber())
+            );
         }
     }
 

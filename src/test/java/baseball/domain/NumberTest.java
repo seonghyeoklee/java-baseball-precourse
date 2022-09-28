@@ -2,8 +2,9 @@ package baseball.domain;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
+import baseball.service.BaseballGameTemplate;
+import baseball.service.CallBackImpl;
 import baseball.service.DefaultGameService;
-import baseball.service.GameTemplate;
 import baseball.setting.Normal;
 import java.util.Set;
 import org.junit.jupiter.api.DisplayName;
@@ -31,9 +32,11 @@ class NumberTest {
 
     @Test
     void test() {
-        GameTemplate gameTemplate = new GameTemplate(new DefaultGameService(new Normal()));
-        gameTemplate.execute(() -> System.out.println("gameTemplate = " + gameTemplate));
-
+        BaseballGameTemplate<String> baseballGameTemplate = new BaseballGameTemplate<>(
+            new DefaultGameService(new Normal())
+        );
+        String execute = baseballGameTemplate.execute(new CallBackImpl());
+        System.out.println("execute = " + execute);
     }
 
 }
