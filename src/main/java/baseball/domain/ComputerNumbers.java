@@ -1,19 +1,19 @@
 package baseball.domain;
 
+import static baseball.type.GameSettingType.NUMBER_SIZE;
 import static baseball.type.NumberRangeType.END_INCLUSIVE;
 import static baseball.type.NumberRangeType.START_INCLUSIVE;
-import static baseball.type.ValueType.NUMBER_SIZE;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Numbers {
+public class ComputerNumbers {
 
     private static Set<Number> instance = new HashSet<>();
 
-    private Numbers() {
+    private ComputerNumbers() {
     }
 
     public static void clear() {

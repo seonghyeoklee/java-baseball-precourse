@@ -1,11 +1,11 @@
 package baseball.type;
 
-public enum ValueType {
+public enum GameSettingType {
     NUMBER_SIZE(3);
 
     private final int value;
 
-    ValueType(int value) {
+    GameSettingType(int value) {
         this.value = value;
     }
 
