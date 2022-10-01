@@ -5,7 +5,7 @@ public enum GameSettingType {
 
     private final int value;
 
-    GameSettingType(int value) {
+    GameSettingType(final int value) {
         this.value = value;
     }
 

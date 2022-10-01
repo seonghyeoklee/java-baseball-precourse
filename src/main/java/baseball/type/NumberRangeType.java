@@ -9,7 +9,7 @@ public enum NumberRangeType {
 
     private final int number;
 
-    NumberRangeType(int number) {
+    NumberRangeType(final int number) {
         this.number = number;
     }
 

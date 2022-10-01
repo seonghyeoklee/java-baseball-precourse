@@ -7,7 +7,7 @@ public enum GameMessageType {
 
     private final String message;
 
-    GameMessageType(String message) {
+    GameMessageType(final String message) {
         this.message = message;
     }
 

@@ -7,35 +7,25 @@ import static baseball.type.NumberRangeType.START_INCLUSIVE;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-public class ComputerNumbers {
+public class ComputerNumber {
 
-    private static Set<Number> instance = new HashSet<>();
+    private final Set<Number> computerNumbers = new HashSet<>();
 
-    private ComputerNumbers() {
-    }
-
-    public static void clear() {
-        instance.clear();
-    }
-
-    public static Set<Number> getInstance() {
-        if (instance.isEmpty()) {
-            instance = pickNumberInRange();
+    public Set<Number> pickNumberInRange() {
+        for (int number : getNumbers()) {
+            this.computerNumbers.add(new Number(number));
         }
-        return instance;
+        return computerNumbers;
     }
 
-    private static Set<Number> pickNumberInRange() {
+    private static Set<Integer> getNumbers() {
         Set<Integer> numbers = new HashSet<>();
         while (numbers.size() < NUMBER_SIZE.getValue()) {
             numbers.add(
                 Randoms.pickNumberInRange(START_INCLUSIVE.getNumber(), END_INCLUSIVE.getNumber())
             );
         }
-        return numbers.stream()
-            .map(Number::new)
-            .collect(Collectors.toSet());
+        return numbers;
     }
 }
