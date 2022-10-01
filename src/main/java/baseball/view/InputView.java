@@ -1,5 +1,7 @@
 package baseball.view;
 
+import static baseball.type.ErrorMessageType.INPUT_NOT_ALLOW_BLANK;
+
 import baseball.domain.PlayerNumbers;
 import baseball.type.GameEndType;
 
@@ -19,14 +21,28 @@ public class InputView {
         return GameEndType.findByInput(parseInt(this.input));
     }
 
-    public void validate() {
+    private void validate() {
         if (isBlank()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INPUT_NOT_ALLOW_BLANK.getMessage());
         }
     }
 
     private boolean isBlank() {
-        return this.input == null || this.input.isEmpty();
+        return isNullOrEmpty() || isWhitespace();
+    }
+
+    private boolean isWhitespace() {
+        for (int i = 0; i < this.input.length(); i++) {
+            char charAt = this.input.charAt(i);
+            if (Character.isWhitespace(charAt)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isNullOrEmpty() {
+        return this.input == null || this.input.length() == 0;
     }
 
     private int parseInt(String value) {
