@@ -7,22 +7,22 @@ import baseball.domain.PlayerNumber;
 
 public class InputPlayerNumber implements Input<PlayerNumber> {
 
-    private final String playerNumber;
+    private final String input;
 
-    public InputPlayerNumber(String playerNumber) {
-        this.playerNumber = playerNumber;
+    public InputPlayerNumber(String input) {
+        this.input = input;
     }
 
     @Override
     public void validate() {
-        isBlank(this.playerNumber);
-        for (char charAt : playerNumber.toCharArray()) {
+        isBlank(this.input);
+        for (char charAt : input.toCharArray()) {
             validateRange(Character.getNumericValue(charAt));
         }
     }
 
     @Override
     public PlayerNumber create() {
-        return new PlayerNumber(this.playerNumber);
+        return new PlayerNumber(this.input);
     }
 }
