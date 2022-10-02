@@ -23,7 +23,6 @@ public class PlayerNumber {
         return result;
     }
 
-
     public Set<Number> getPlayerNumbers() {
         return playerNumbers;
     }

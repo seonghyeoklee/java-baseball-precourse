@@ -1,12 +1,9 @@
 package baseball.domain.input;
 
 import static baseball.type.ErrorMessageType.INPUT_ALLOW_JUST_3_DIGIT_NUMBERS;
-import static baseball.type.ErrorMessageType.INPUT_NOT_ALLOW_BLANK;
 import static baseball.type.ErrorMessageType.INPUT_NOT_ALLOW_DUPLICATE;
 import static baseball.type.GameSettingType.NUMBER_SIZE;
 import static baseball.type.NumberRangeType.isNumberRangeType;
-import static baseball.util.StringUtils.isNullOrEmpty;
-import static baseball.util.StringUtils.isWhitespace;
 import static baseball.util.StringUtils.parseInt;
 
 import baseball.domain.number.PlayerNumber;
@@ -35,12 +32,6 @@ public class InputPlayerNumber implements Input<PlayerNumber> {
         return new PlayerNumber(this.input);
     }
 
-    private void validateBlank(String input) {
-        if (isNullOrEmpty(input) || isWhitespace(input)) {
-            throw new IllegalArgumentException(INPUT_NOT_ALLOW_BLANK.getMessage());
-        }
-    }
-
     private void validateLength(String input) {
         if (input.length() != NUMBER_SIZE.getValue()) {
             throw new IllegalArgumentException(INPUT_ALLOW_JUST_3_DIGIT_NUMBERS.getMessage());
@@ -60,8 +51,8 @@ public class InputPlayerNumber implements Input<PlayerNumber> {
 
     private Set<Character> toCharacters(String input) {
         Set<Character> characters = new LinkedHashSet<>();
-        for (char ch : input.toCharArray()) {
-            characters.add(ch);
+        for (char character : input.toCharArray()) {
+            characters.add(character);
         }
         return characters;
     }

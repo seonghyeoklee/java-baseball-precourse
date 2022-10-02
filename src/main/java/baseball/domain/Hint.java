@@ -14,6 +14,11 @@ public class Hint {
     private int ball;
     private int strike;
 
+    public Hint(final int ball, final int strike) {
+        this.ball = ball;
+        this.strike = strike;
+    }
+
     public Hint(PlayerNumber playerNumber, ComputerNumber computerNumber) {
         isSameNumber(playerNumber, computerNumber);
         isSamePosition(playerNumber, computerNumber);
@@ -62,6 +67,13 @@ public class Hint {
         }
     }
 
+    private String getString(boolean isExist, String result, String hintToString) {
+        if (isExist) {
+            result += hintToString;
+        }
+        return result;
+    }
+
     @Override
     public String toString() {
         String result = "";
@@ -69,13 +81,6 @@ public class Hint {
         result = getString(isExistBall() && isExistStrike(), result, " ");
         result = getString(isExistStrike(), result, this.strike + STRIKE.getMessage());
         result = getString(!isExistBall() && !isExistStrike(), result, NOTHING.getMessage());
-        return result;
-    }
-
-    private String getString(boolean isExist, String result, String hintToString) {
-        if (isExist) {
-            result += hintToString;
-        }
         return result;
     }
 }
