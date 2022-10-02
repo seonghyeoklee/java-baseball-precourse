@@ -1,6 +1,5 @@
 package baseball.util;
 
-import static baseball.type.ErrorMessageType.INPUT_NOT_ALLOW_BLANK;
 import static baseball.type.ErrorMessageType.INPUT_ONLY_ALLOW_NUMBER;
 
 public class StringUtils {
@@ -13,13 +12,7 @@ public class StringUtils {
         }
     }
 
-    public static void validateBlank(String input) {
-        if (isNullOrEmpty(input) || isWhitespace(input)) {
-            throw new IllegalArgumentException(INPUT_NOT_ALLOW_BLANK.getMessage());
-        }
-    }
-
-    private static boolean isWhitespace(String input) {
+    public static boolean isWhitespace(String input) {
         for (int i = 0; i < input.length(); i++) {
             char charAt = input.charAt(i);
             if (Character.isWhitespace(charAt)) {
@@ -29,7 +22,7 @@ public class StringUtils {
         return false;
     }
 
-    private static boolean isNullOrEmpty(String input) {
+    public static boolean isNullOrEmpty(String input) {
         return input == null || input.length() == 0;
     }
 

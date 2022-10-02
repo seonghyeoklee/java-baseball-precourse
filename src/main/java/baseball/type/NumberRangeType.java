@@ -13,7 +13,7 @@ public enum NumberRangeType {
         this.number = number;
     }
 
-    public static void validateRange(final int number) {
+    public static void isNumberRangeType(final int number) {
         if (number < START_INCLUSIVE.getNumber()) {
             throw new IllegalArgumentException(LESS_THAN_START_INCLUSIVE.getMessage());
         }

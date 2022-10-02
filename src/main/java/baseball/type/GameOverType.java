@@ -13,7 +13,7 @@ public enum GameOverType {
         this.value = value;
     }
 
-    public static void validateGameOverType(final String input) {
+    public static void isGameOverType(final String input) {
         if (!isEquals(RESTART, input) && !isEquals(FINISH, input)) {
             throw new IllegalArgumentException(INPUT_ONLY_ALLOW_NUMBER.getMessage());
         }
