@@ -10,7 +10,7 @@ import static baseball.util.StringUtils.isWhitespace;
 import static baseball.util.StringUtils.parseInt;
 
 import baseball.domain.PlayerNumber;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class InputPlayerNumber implements Input<PlayerNumber> {
@@ -52,13 +52,18 @@ public class InputPlayerNumber implements Input<PlayerNumber> {
     }
 
     private void validateDuplicate(String input) {
-        Set<Character> characters = new HashSet<>();
-        for (char ch : input.toCharArray()) {
-            characters.add(ch);
-        }
+        Set<Character> characters = toCharacters(input);
         if (characters.size() != NUMBER_SIZE.getValue()) {
             throw new IllegalArgumentException(INPUT_NOT_ALLOW_DUPLICATE.getMessage());
         }
+    }
+
+    private Set<Character> toCharacters(String input) {
+        Set<Character> characters = new LinkedHashSet<>();
+        for (char ch : input.toCharArray()) {
+            characters.add(ch);
+        }
+        return characters;
     }
 
     private void validateRange(String input) {
