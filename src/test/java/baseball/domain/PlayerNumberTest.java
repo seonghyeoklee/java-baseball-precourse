@@ -1,6 +1,8 @@
 package baseball.domain;
 
+import static baseball.type.ErrorMessageType.INPUT_ALLOW_JUST_3_DIGIT_NUMBERS;
 import static baseball.type.ErrorMessageType.INPUT_NOT_ALLOW_BLANK;
+import static baseball.type.ErrorMessageType.INPUT_ONLY_ALLOW_NUMBER;
 import static baseball.type.ErrorMessageType.LESS_THAN_START_INCLUSIVE;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
@@ -35,4 +37,29 @@ class PlayerNumberTest {
             })
             .withMessageContaining(INPUT_NOT_ALLOW_BLANK.getMessage());
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"12", "1234"})
+    @DisplayName("사용자가 입력한 값이 3자리가 아닌 경우 IllegalArgumentException 예외가 발생한다.")
+    void inputPlayerNumber_allowJust3_digitNumbers(String input) {
+        assertThatIllegalArgumentException()
+            .isThrownBy(() -> {
+                Input<PlayerNumber> inputPlayerNumber = new InputPlayerNumber(input);
+                inputPlayerNumber.validate();
+            })
+            .withMessageContaining(INPUT_ALLOW_JUST_3_DIGIT_NUMBERS.getMessage());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1e3", "!@#"})
+    @DisplayName("사용자가 입력한 값이 숫자가 아닌 경우 IllegalArgumentException 예외가 발생한다.")
+    void inputPlayerNumber_allowOnlyNumber(String input) {
+        assertThatIllegalArgumentException()
+            .isThrownBy(() -> {
+                Input<PlayerNumber> inputPlayerNumber = new InputPlayerNumber(input);
+                inputPlayerNumber.validate();
+            })
+            .withMessageContaining(INPUT_ONLY_ALLOW_NUMBER.getMessage());
+    }
+
 }

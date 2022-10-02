@@ -2,7 +2,6 @@ package baseball.util;
 
 import static baseball.type.ErrorMessageType.INPUT_NOT_ALLOW_BLANK;
 import static baseball.type.ErrorMessageType.INPUT_ONLY_ALLOW_NUMBER;
-import static baseball.type.GameSettingType.NUMBER_SIZE;
 
 public class StringUtils {
 
@@ -17,12 +16,6 @@ public class StringUtils {
     public static void validateBlank(String input) {
         if (isNullOrEmpty(input) || isWhitespace(input)) {
             throw new IllegalArgumentException(INPUT_NOT_ALLOW_BLANK.getMessage());
-        }
-    }
-
-    public static void validateLength(String input) {
-        if (input.length() != NUMBER_SIZE.getValue()) {
-            throw new IllegalArgumentException();
         }
     }
 

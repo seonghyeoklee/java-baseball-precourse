@@ -1,8 +1,10 @@
 package baseball.view.input;
 
+import static baseball.type.ErrorMessageType.INPUT_ALLOW_JUST_3_DIGIT_NUMBERS;
+import static baseball.type.GameSettingType.NUMBER_SIZE;
 import static baseball.type.NumberRangeType.validateRange;
+import static baseball.util.StringUtils.parseInt;
 import static baseball.util.StringUtils.validateBlank;
-import static baseball.util.StringUtils.validateLength;
 
 import baseball.domain.PlayerNumber;
 
@@ -18,6 +20,7 @@ public class InputPlayerNumber implements Input<PlayerNumber> {
     public void validate() {
         validateBlank(this.input);
         validateLength(this.input);
+        validateNumber(this.input);
         for (char charAt : input.toCharArray()) {
             validateRange(Character.getNumericValue(charAt));
         }
@@ -26,5 +29,15 @@ public class InputPlayerNumber implements Input<PlayerNumber> {
     @Override
     public PlayerNumber create() {
         return new PlayerNumber(this.input);
+    }
+
+    private void validateLength(String input) {
+        if (input.length() != NUMBER_SIZE.getValue()) {
+            throw new IllegalArgumentException(INPUT_ALLOW_JUST_3_DIGIT_NUMBERS.getMessage());
+        }
+    }
+
+    private void validateNumber(String input) {
+        parseInt(input);
     }
 }
