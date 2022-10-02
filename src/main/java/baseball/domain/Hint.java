@@ -1,15 +1,34 @@
 package baseball.domain;
 
+import static baseball.type.GameMessageType.BALL;
+import static baseball.type.GameMessageType.NOTHING;
+import static baseball.type.GameMessageType.STRIKE;
+
+import baseball.domain.number.ComputerNumber;
+import baseball.domain.number.Number;
+import baseball.domain.number.PlayerNumber;
 import java.util.List;
 
 public class Hint {
 
-    private int strike;
     private int ball;
+    private int strike;
 
-    public void count(PlayerNumber playerNumber, ComputerNumber computerNumber) {
+    public Hint(PlayerNumber playerNumber, ComputerNumber computerNumber) {
         isSameNumber(playerNumber, computerNumber);
         isSamePosition(playerNumber, computerNumber);
+    }
+
+    public boolean isExistBall() {
+        return this.ball > 0;
+    }
+
+    public boolean isExistStrike() {
+        return this.strike > 0;
+    }
+
+    public boolean isThreeStrike() {
+        return this.strike == 3;
     }
 
     private void isSameNumber(PlayerNumber playerNumber, ComputerNumber computerNumber) {
@@ -28,7 +47,7 @@ public class Hint {
 
     private void countSameNumber(List<Integer> computerNumber, Number number) {
         if (computerNumber.contains(number.getNumber())) {
-            ball++;
+            this.ball++;
         }
     }
 
@@ -38,24 +57,25 @@ public class Hint {
         int index
     ) {
         if (playerNumbers.get(index).equals(computerNumbers.get(index))) {
-            strike++;
-            ball--;
+            this.strike++;
+            this.ball--;
         }
-    }
-
-    public int getStrike() {
-        return strike;
-    }
-
-    public int getBall() {
-        return ball;
     }
 
     @Override
     public String toString() {
-        return "Hint{" +
-            "strike=" + strike +
-            ", ball=" + ball +
-            '}';
+        String result = "";
+        result = getString(isExistBall(), result, this.ball + BALL.getMessage());
+        result = getString(isExistBall() && isExistStrike(), result, " ");
+        result = getString(isExistStrike(), result, this.strike + STRIKE.getMessage());
+        result = getString(!isExistBall() && !isExistStrike(), result, NOTHING.getMessage());
+        return result;
+    }
+
+    private String getString(boolean isExist, String result, String hintToString) {
+        if (isExist) {
+            result += hintToString;
+        }
+        return result;
     }
 }

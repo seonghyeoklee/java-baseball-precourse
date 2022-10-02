@@ -1,4 +1,4 @@
-package baseball.view.input;
+package baseball.domain.input;
 
 import static baseball.type.ErrorMessageType.INPUT_NOT_ALLOW_BLANK;
 import static baseball.type.GameOverType.getGameOverTypeByInput;

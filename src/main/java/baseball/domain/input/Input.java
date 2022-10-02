@@ -1,4 +1,4 @@
-package baseball.view.input;
+package baseball.domain.input;
 
 public interface Input<T> {
 

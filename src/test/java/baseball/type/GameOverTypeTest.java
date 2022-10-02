@@ -5,8 +5,8 @@ import static baseball.type.ErrorMessageType.INPUT_ONLY_ALLOW_NUMBER;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import baseball.view.input.Input;
-import baseball.view.input.InputGameOver;
+import baseball.domain.input.Input;
+import baseball.domain.input.InputGameOver;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;

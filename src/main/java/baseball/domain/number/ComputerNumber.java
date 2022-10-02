@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.number;
 
 import static baseball.type.GameSettingType.NUMBER_SIZE;
 import static baseball.type.NumberRangeType.END_INCLUSIVE;
@@ -14,10 +14,8 @@ public class ComputerNumber {
 
     private final Set<Number> computerNumbers = new LinkedHashSet<>();
 
-    public void pickNumberInRange() {
-        for (int number : getNumbers()) {
-            this.computerNumbers.add(new Number(number));
-        }
+    public ComputerNumber() {
+        pickNumberInRange();
     }
 
     public List<Integer> toList() {
@@ -28,7 +26,13 @@ public class ComputerNumber {
         return result;
     }
 
-    private static Set<Integer> getNumbers() {
+    private void pickNumberInRange() {
+        for (int number : getNumbers()) {
+            this.computerNumbers.add(new Number(number));
+        }
+    }
+
+    private Set<Integer> getNumbers() {
         Set<Integer> numbers = new LinkedHashSet<>();
         while (numbers.size() < NUMBER_SIZE.getValue()) {
             numbers.add(

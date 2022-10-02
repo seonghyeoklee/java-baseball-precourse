@@ -1,4 +1,4 @@
-package baseball.view.input;
+package baseball.domain.input;
 
 import static baseball.type.ErrorMessageType.INPUT_ALLOW_JUST_3_DIGIT_NUMBERS;
 import static baseball.type.ErrorMessageType.INPUT_NOT_ALLOW_BLANK;
@@ -9,7 +9,7 @@ import static baseball.util.StringUtils.isNullOrEmpty;
 import static baseball.util.StringUtils.isWhitespace;
 import static baseball.util.StringUtils.parseInt;
 
-import baseball.domain.PlayerNumber;
+import baseball.domain.number.PlayerNumber;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
