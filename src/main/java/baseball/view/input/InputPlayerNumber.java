@@ -1,7 +1,8 @@
 package baseball.view.input;
 
 import static baseball.type.NumberRangeType.validateRange;
-import static baseball.util.StringUtils.isBlank;
+import static baseball.util.StringUtils.validateBlank;
+import static baseball.util.StringUtils.validateLength;
 
 import baseball.domain.PlayerNumber;
 
@@ -15,7 +16,8 @@ public class InputPlayerNumber implements Input<PlayerNumber> {
 
     @Override
     public void validate() {
-        isBlank(this.input);
+        validateBlank(this.input);
+        validateLength(this.input);
         for (char charAt : input.toCharArray()) {
             validateRange(Character.getNumericValue(charAt));
         }
